@@ -2190,5 +2190,12 @@ def teacher_reset_student_password():
     conn.close()
     return jsonify({"success": True, "message": f"Password for {user['name']} (Class {class_name}-{division}) reset successfully"})
 
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello from Railway!"
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
